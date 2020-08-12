@@ -114,3 +114,58 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(obj) {
+  //CREATING COMPONENT//
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP = document.createElement('p');
+  const articlePTwo = document.createElement('p');
+  const articlePThree = document.createElement('p');
+  const expandButton = document.createElement('span');  
+  
+  
+
+   //PROGRAMMATICALLY UPDATE CONTENT//
+   articleTitle.textContent = obj.title;
+   articleDate.textContent = obj.date;
+   articleP.textContent = obj.firstParagraph;
+   articlePTwo.textContent = obj.secondParagraph;
+   articlePThree.textContent = obj.thirdParagraph;
+   
+   
+  //STYLING//
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+  
+  
+
+  // Interactivity 
+  const open = '+'
+  expandButton.textContent = open;
+  
+
+  //APPENDING//
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate);
+  article.appendChild(articleP);
+  article.appendChild(articlePTwo);
+  article.appendChild(articlePThree);
+  article.appendChild(expandButton);
+  
+  //EVENTS//
+  //Events are user interactions within a page//
+  expandButton.addEventListener('click', (e) =>   { 
+    console.log('Clicked button;', e.target)
+    article.classList.toggle('article');
+    //expandButton.classList.toggle('article');
+    
+  });
+  
+  return article;
+}
+const articles = document.querySelector('.articles');
+data.forEach((obj) => {
+  articles.appendChild(articleMaker(obj));
+});
