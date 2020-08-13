@@ -122,7 +122,8 @@ function articleMaker(obj) {
   const articleP = document.createElement('p');
   const articlePTwo = document.createElement('p');
   const articlePThree = document.createElement('p');
-  const expandButton = document.createElement('span');  
+  const expandButton = document.createElement('span');
+  ;  
   
   
 
@@ -139,11 +140,19 @@ function articleMaker(obj) {
   articleDate.classList.add('date');
   expandButton.classList.add('expandButton');
   
+
+  //const body = document.querySelector('body'); 
+  
+  
   
 
   // Interactivity 
-  const open = '+'
-  expandButton.textContent = open;
+  
+  const close = '+';
+  expandButton.textContent = close;
+  
+
+  
   
 
   //APPENDING//
@@ -153,15 +162,15 @@ function articleMaker(obj) {
   article.appendChild(articlePTwo);
   article.appendChild(articlePThree);
   article.appendChild(expandButton);
+ 
   
   //EVENTS//
   //Events are user interactions within a page//
   expandButton.addEventListener('click', (e) =>   { 
     console.log('Clicked button;', e.target)
-    article.classList.toggle('article');
-    //expandButton.classList.toggle('article');
-    
-  });
+    expandButton.classList.toggle('article-close');
+    article.classList.toggle('article-open');
+});
   
   return article;
 }
